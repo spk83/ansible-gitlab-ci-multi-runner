@@ -15,14 +15,14 @@
 - name: systemctl daemon-reload
   become: yes
   become_user: root
-  when: gitlab_ci_multi_runner_activate and gitlabrunnerServiceInstall is changed
+  when: gitlab_runner_activate | bool and gitlabrunnerServiceInstall is changed
   systemd:
     daemon_reload: yes
-
+    
 - name: start gitlab-runner
   become: yes
   become_user: root
-  when: gitlab_ci_multi_runner_activate
+  when: gitlab_runner_activate | bool
   service:
     name: gitlab-runner
     state: started

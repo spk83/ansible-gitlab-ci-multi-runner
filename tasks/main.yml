@@ -14,14 +14,14 @@
   become: yes
   become_user: root
   get_url:
-    url: '{{ gitlab_ci_multi_runner_url }}'
-    dest: '{{ gitlab_ci_multi_runner_dl_dir }}/gitlab-runner.sh'
+    url: '{{ gitlab_runner_url }}'
+    dest: '{{ gitlab_runner_dl_dir }}/gitlab-runner.sh'
     mode: 0755
 
 - name: running bootstrap script
   become: yes
   become_user: root
-  command: '{{ gitlab_ci_multi_runner_dl_dir }}/gitlab-runner.sh'
+  command: '{{ gitlab_runner_dl_dir }}/gitlab-runner.sh'
   args:
     creates: /usr/bin/gitlab-runner
 
@@ -35,7 +35,7 @@
 - name: add the gitlab-runner user to the docker group
   become: yes
   become_user: root
-  with_items: '{{ gitlab_ci_multi_runner_addl_groups }}'
+  with_items: '{{ gitlab_runner_addl_groups }}'
   user:
     name: gitlab-runner
     append: yes
@@ -46,7 +46,7 @@
   become_user: root
   with_items:
     - d: /etc/gitlab-runner
-      m: '0600'
+      m: '0700'
     - d: /etc/sysconfig
       m: '0755'
   file:
@@ -69,4 +69,4 @@
     dest: '{{ item.d }}/{{ item.f }}'
     mode: '{{ item.m }}'
 
-- include_tasks: '{{ gitlab_ci_multi_runner_init|default("systemd") }}.yml'
+- include_tasks: '{{gitlab_runner_init|default("systemd")}}.yml'

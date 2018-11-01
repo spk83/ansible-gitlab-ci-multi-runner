@@ -1,26 +1,22 @@
-andrewrothstein.gitlab-ci-multi-runner
-======================================
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-gitlab-ci-multi-runner.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-gitlab-ci-multi-runner)
+# spk83.gitlab-runner
+
+[![Build Status](https://travis-ci.org/spk83/ansible-gitlab-runner.svg?branch=master)](https://travis-ci.org/spk83/ansible-gitlab-runner)
 
 Installs and configures a [GitLab Runner](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner).
 
-Requirements
-------------
+## Requirements
 
 See [meta/main.yml](meta/main.yml)
 
-Role Variables
---------------
+## Role Variables
 
 See [defaults/main.yml](defaults/main.yml)
 
-Dependencies
-------------
+## Dependencies
 
 See [meta/main.yml](meta/main.yml)
 
-Example Playbook
-----------------
+## Example Playbook
 
 ```yml
 - hosts: servers
@@ -28,17 +24,14 @@ Example Playbook
     - andrewrothstein.gitlab-ci-multi-runner
 ```
 
-License
--------
+## License
 
 MIT
 
-Author Information
-------------------
+## Author Information
 
 Andrew Rothstein <andrew.rothstein@gmail.com>
 
-Contributors
-------------
+## Contributors
 
 Vishal Shah <vishal.shah@nyu.edu>
