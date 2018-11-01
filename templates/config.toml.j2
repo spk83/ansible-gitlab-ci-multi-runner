@@ -1,2 +1,9 @@
 concurrent = {{ gitlab_runner_concurrent_runners_per_host }}
 check_interval = {{ gitlab_runner_check_gitlab_new_builds_interval }}
+
+{% if gitlab_runner_session_server_enabled is defined and gitlab_runner_session_server_enabled %}
+[session_server]
+  listen_address = "{{ gitlab_runner_session_server_listen_address | default('0.0.0.0') }}:8093"
+  advertise_address = "{{ gitlab_runner_session_server_advertise_address | default(ansible_nodename) }}:8093"
+  session_timeout = {{ gitlab_runner_session_server_timeout | default(1800) }}
+{% endif %}

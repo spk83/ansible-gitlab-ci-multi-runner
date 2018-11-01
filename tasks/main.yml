@@ -46,7 +46,7 @@
   become_user: root
   with_items:
     - d: /etc/gitlab-runner
-      m: '0600'
+      m: '0700'
     - d: /etc/sysconfig
       m: '0755'
   file:
@@ -69,4 +69,4 @@
     dest: '{{item.d}}/{{item.f}}'
     mode: '{{item.m}}'
 
-- include: systemd.yml
+- include_tasks: '{{gitlab_runner_init|default("systemd")}}.yml'

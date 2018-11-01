@@ -1,5 +1,6 @@
 spk83.gitlab-runner
-======================================
+====================
+
 [![Build Status](https://travis-ci.org/spk83/ansible-gitlab-runner.svg?branch=master)](https://travis-ci.org/spk83/ansible-gitlab-runner)
 
 Installs and configures a [GitLab Runner](https://gitlab.com/gitlab-org/gitlab-runner).
